@@ -11,7 +11,7 @@ def caesar_encrypt(plaintext : str , shift : int) -> str:
             ciphertext.append(char)
     return "".join(ciphertext)
 
-def caesar_decrypt(cipher : str) -> str:
+def caesar_decrypt_bruteforce(cipher : str) -> str:
     plaintext = []
     for shift in range(1 , 27):
         temp = []
@@ -38,5 +38,5 @@ plaintext = "ihavenothingbro"
 key = 8
 cipher = caesar_encrypt(plaintext , key)
 print("Ciphertext = " , cipher)
-plaintext = caesar_decrypt(cipher)
+plaintext = caesar_decrypt_bruteforce(cipher)
 print("Plaintext = " , plaintext)
