@@ -70,25 +70,25 @@ def playfair_decrypt(key : str , cipher_text : str):
     matrix = generate_playfair_matrix(key)
     clean_cipher = [c.upper().replace("J" , "I") for c in cipher_text]
     diagraph = [clean_cipher[i : i + 2] for i in range(0 , len(clean_cipher) , 2)]
-    plain = [encrypt_pair(matrix , P[0] , P[1]) for P in diagraph]
+    plain = [decrypt_pair(matrix , P[0] , P[1]) for P in diagraph]
     return "".join(plain) 
 
 
-def playfair_encrypt(key : str , msg : str):
+def playfair_encrypt(key : str , plaintext : str):
     matrix = generate_playfair_matrix(key)
-    diagraph = prepared_plaintext(msg)
+    diagraph = prepared_plaintext(plaintext)
     cipher = [encrypt_pair(matrix , P[0] , P[1]) for P in diagraph]
     return "".join(cipher) 
 
 
 if __name__ == "__main__":
     key = "MONARCHY"
-    msg = "SECRET"
+    plaintext = "INSTRUMENTS"
     matrix = generate_playfair_matrix(key)
     #print(matrix)
     for row in matrix:
         print(" " + " ".join(row))
-    cipher_text = playfair_encrypt(key , msg)
+    cipher_text = playfair_encrypt(key , plaintext)
     print(cipher_text)
     plain_text = playfair_decrypt(key , cipher_text)
     print(plain_text)
